@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Website UNS</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial;
+        background-image: url('background uns.jpeg');
+        background-size: cover;
+        background-attachment: fixed;
+    }
+
+    /* LOGO UNS KIRI BAWAH */
+    .logo-uns {
+        position: fixed;
+        bottom: 30px;
+        left: 50px;
+        width: 130px;
+        z-index: 999;
+        opacity: 0.95;
+    }
+
+    .sidebar {
+        width: 250px;
+        height: 100vh;
+        background: rgba(255,255,255,0.9);
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .sidebar h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 26px;
+        font-weight: bold;
+    }
+
+    .sidebar button {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 10px;
+        border: none;
+        background: #007bff;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .sidebar button:hover {
+        background: #0056b3;
+    }
+
+    .content {
+        margin-left: 270px;
+        padding: 20px;
+        background: rgba(255,255,255,0.85);
+        min-height: 100vh;
+    }
+
+    .box-container {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .box {
+        width: 150px;
+        height: 100px;
+        background: #eee;
+        border: 2px solid #333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .facility-img {
+        width: 250px;
+        height: 160px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin: 10px;
+    }
+
+    .author-photo {
+        width: 220px;
+        border-radius: 12px;
+        margin-bottom: 15px;
+    }
+
+    /* TOMBOL BACK */
+    .back-btn {
+        padding: 8px 15px;
+        background: #ff9800;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-bottom: 15px;
+        font-weight: bold;
+    }
+
+    .back-btn:hover {
+        background: #e68900;
+    }
+</style>
+
+<script>
+function showPage(id) {
+    let pages = document.querySelectorAll(".page");
+    pages.forEach(p => p.style.display = "none");
+    document.getElementById(id).style.display = "block";
+}
+
+function showJurusan(fakultas) {
+    const data = {
+        "FK": ["Kedokteran", "Keperawatan", "Gizi"],
+        "FMIPA": ["Matematika", "Fisika", "Kimia", "Biologi", "Informatika"],
+        "FT": ["Teknik Sipil", "Teknik Industri", "Teknik Elektro", "Arsitektur"],
+        "FEB": ["Manajemen", "Akuntansi", "Ekonomi Pembangunan"],
+        "FKIP": ["Pendidikan Matematika", "Bahasa Indonesia", "Bahasa Inggris"]
+    };
+
+    let jur = data[fakultas];
+
+    let html = "<button class='back-btn' onclick=\"showPage('fakultas')\">← Kembali</button>";
+    html += "<h2>Jurusan di " + fakultas + "</h2><ul>";
+    jur.forEach(j => html += "<li>" + j + "</li>");
+    html += "</ul>";
+
+    document.getElementById("content-fakultas").innerHTML = html;
+    showPage("fakultas-page");
+}
+</script>
+
+</head>
+
+<body>
+
+<!-- LOGO UNS KIRI BAWAH -->
+<img src="logo uns.jpeg" class="logo-uns">
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <h2>U N S</h2>
+
+    <button onclick="showPage('home')">Beranda</button>
+    <button onclick="showPage('sejarah')">Sejarah</button>
+    <button onclick="showPage('visimisi')">Visi - Misi</button>
+    <button onclick="showPage('fakultas')">Fakultas</button>
+    <button onclick="showPage('fasilitas')">Fasilitas</button>
+    <button onclick="showPage('jalur')">Jalur Masuk</button>
+    <button onclick="showPage('author')">Author</button>
+</div>
+
+<!-- BERANDA -->
+<div class="content page" id="home" style="display:block;">
+    <h1>Selamat Datang Calon Mahasiswa UNS</h1>
+    <p>Silahkan klik menu di samping untuk melihat informasi lengkap tentang UNS.</p>
+</div>
+
+<!-- SEJARAH -->
+<div class="content page" id="sejarah" style="display:none;">
+    <button onclick="showPage('home')" class="back-btn">← Kembali</button>
+    <h1>Sejarah UNS</h1>
+    <p>UNS berawal dari keinginan untuk mendirikan universitas negeri di Solo 
+yang kemudian diwujudkan dengan berdirinya Universitas Negeri Surakarta Sebelas 
+Maret pada 11 Maret 1976 melalui penyatuan beberapa perguruan tinggi. Perguruan 
+tinggi tersebut adalah Institut Keguruan dan Ilmu Pendidikan (IKIP) Negeri Surakarta, 
+Sekolah Tinggi Olahraga (STO) Negeri Surakarta, Akademi Administrasi Niaga (AAN) 
+Surakarta, Universitas Gabungan Surakarta (UGS), dan Fakultas Kedokteran Perguruan 
+Tinggi Pembangunan Nasional (PTPN) Cabang Surakarta. Nama universitas kemudian 
+diubah menjadi Universitas Sebelas Maret (UNS) berdasarkan Keputusan Presiden RI 
+Nomor 55 Tahun 1982.</p>
+</div>
+
+<!-- VISI MISI -->
+<div class="content page" id="visimisi" style="display:none;">
+    <button onclick="showPage('home')" class="back-btn">← Kembali</button>
+    <h1>Visi & Misi</h1>
+    <p><b>Visi:</b> Menjadi pusat pengembangan ilmu pengetahuan, teknologi, 
+dan seni yang unggul di tingkat internasional dengan berlandaskan pada nilai 
+luhur budaya nasional.</p>
+    <p><b>Misi:</b>
+    <ul>
+        <li>Menyelenggarakan pendidikan dan pengajaran yang menuntut 
+pengembangan diri Dosen dan mendorong kemandirian Mahasiswa dalam memperoleh 
+pengetahuan, keterampilan, dan sikap;</li>
+        <li>Menyelenggarakan penelitian yang berbasis pada penemuan baru di 
+bidang ilmu pengetahuan, teknologi, dan seni; dan</li>
+        <li>Menyelenggarakan kegiatan pengabdian masyarakat yang berorientasi 
+pada upaya pemberdayaan masyarakat.</li>
+    </ul>
+</div>
+
+<!-- FAKULTAS -->
+<div class="content page" id="fakultas" style="display:none;">
+    <button onclick="showPage('home')" class="back-btn">← Kembali</button>
+    <h1>Fakultas UNS</h1>
+
+    <div class="box-container">
+        <div class="box" onclick="showJurusan('FK')">FK</div>
+        <div class="box" onclick="showJurusan('FMIPA')">FMIPA</div>
+        <div class="box" onclick="showJurusan('FT')">FT</div>
+        <div class="box" onclick="showJurusan('FEB')">FEB</div>
+        <div class="box" onclick="showJurusan('FKIP')">FKIP</div>
+    </div>
+</div>
+
+<!-- JURUSAN HALAMAN -->
+<div class="content page" id="fakultas-page" style="display:none;">
+    <div id="content-fakultas"></div>
+</div>
+
+<!-- FASILITAS -->
+<div class="content page" id="fasilitas" style="display:none;">
+    <button onclick="showPage('home')" class="back-btn">← Kembali</button>
+    <h1>fasilitas</h1>
+
+    <img src="Asrama Mahasiswa.jpeg" class="facility-img">
+    <p>Asrama Mahasiswa</p>
+
+    <img src="Danau Kampus UNS.jpeg" class="facility-img">
+    <p>Danau Kampus UNS</p>
+
+    <img src="Lapangan Olahraga.jpeg" class="facility-img">
+    <p>Lapangan Olahraga</p>
+  
+    <img src="Fasilitas Ramah Disabilitas.jpeg" class="facility-img">
+    <p>Fasilitas Ramah Disabilitas</p>
+
+    <img src="Ruang Kelas.jpeg" class="facility-img">
+    <p>Ruang Kelas</p>
+</div>
+
+<!-- JALUR MASUK -->
+<div class="content page" id="jalur" style="display:none;">
+    <button onclick="showPage('home')" class="back-btn">← Kembali</button>
+    <h1>Jalur Masuk UNS</h1>
+
+    <div class="box-container">
+        <div class="box" onclick="showPage('snbp')">SNBP</div>
+        <div class="box" onclick="showPage('snbt')">SNBT</div>
+        <div class="box" onclick="showPage('mandiri')">Mandiri</div>
+    </div>
+</div>
+
+<div class="content page" id="snbp" style="display:none;">
+    <button onclick="showPage('jalur')" class="back-btn">← Kembali</button>
+    <h1>Jalur SNBP</h1>
+    <p>Jalur masuk SNBP di Universitas Sebelas Maret (UNS) merupakan jalur seleksi 
+nasional berdasarkan prestasi yang menggunakan nilai rapor dan prestasi akademik maupun 
+non-akademik siswa. Kriteria penilaiannya didasarkan pada nilai rapor siswa dari kelas 10 
+hingga 12, serta prestasi tambahan yang dimiliki, seperti yang diumumkan melalui laman resmi 
+SNPMB BPPP Kemendikbudristek.</p> 
+
+<p><b>Mekanisme seleksi</b></p>
+<ol>
+<li>Penilaian Rapor: Penilaian utama SNBP adalah rata-rata nilai rapor siswa selama tiga tahun 
+terakhir.</li>
+<li>Prestasi Tambahan: Prestasi akademik dan non-akademik siswa juga menjadi faktor penentu 
+kelulusan.</li>
+<li>Rekomendasi Sekolah: Prestasi dan rekomendasi dari sekolah akan dipertimbangkan dalam 
+proses seleksi.</li>
+</ol>
+<p><b>Hal-hal yang perlu diperhatikan</b></p>
+<ul>
+<li>Akun SNPMB: Calon mahasiswa harus memiliki akun SNPMB untuk mendaftar di jalur ini.</li>
+<li>Keterbatasan: Peserta yang lolos SNBP tidak dapat mengikuti SNBT atau Seleksi Mandiri UNS.</li>
+<li>Sumber Informasi: Informasi resmi mengenai SNBP dapat diakses melalui laman SNPMB BPPP dan 
+Universitas Sebelas Maret.</li>
+</ul>
+</div>
+
+<div class="content page" id="snbt" style="display:none;">
+    <button onclick="showPage('jalur')" class="back-btn">← Kembali</button>
+    <h1>Jalur SNBT</h1>
+    <p>UNS menerima peserta melalui jalur masuk SNBT (Seleksi Nasional Berdasarkan Tes) 
+dengan mendaftar UTBK-SNBT melalui laman SNPMB. Hasil UTBK ini dapat digunakan untuk 
+mendaftar Jalur Mandiri UNS, seperti Jalur Reguler-UTBK, yang tidak memerlukan tes lagi, 
+atau untuk memilih program studi lainnya. Peserta yang mendaftar melalui jalur SNBT juga akan 
+diproses secara nasional berdasarkan nilai UTBK-nya.</p>
+
+ <p><b>Jalur Masuk UNS yang Menggunakan Hasil SNBT</b></p>
+<ul>
+<li><b>Jalur Reguler-UTBK:</b> Merupakan bagian dari seleksi mandiri UNS, di mana peserta yang 
+telah memiliki nilai UTBK-SNBT dapat mendaftar tanpa perlu mengikuti ujian kembali. 
+Pendaftaran dilakukan melalui laman resmi SPMB UNS.</li>
+<li><b>Jalur Reguler (Ujian):</b> Selain jalur UTBK, peserta juga bisa mendaftar melalui 
+Jalur Reguler Ujian UNS yang akan diuji dengan Ujian Tulis (Utul) yang diselenggarakan 
+oleh UNS.</li>
+<li><b>Jalur Afirmasi:</b> Meliputi Jalur Afirmasi Disabilitas, Jalur Afirmasi Penelusuran 
+Bibit Unggul, dan Jalur Afirmasi Kemaslahatan, yang diseleksi berdasarkan kriteria khusus 
+seperti disabilitas, prestasi, atau putra-putri dari staf pendidik UNS.</li>
+<li><b>Jalur Kemitraan:</b> Jalur ini terbuka bagi calon mahasiswa yang mendapatkan 
+rekomendasi dari instansi mitra, seperti perusahaan atau instansi pemerintah.</li>
+</ul> 
+</div>
+
+<div class="content page" id="mandiri" style="display:none;">
+    <button onclick="showPage('jalur')" class="back-btn">← Kembali</button>
+    <h1>Jalur Mandiri UNS</h1>
+    <p>Jalur masuk UNS mandiri memiliki beberapa pilihan, termasuk Jalur Reguler 
+UTBK (menggunakan nilai UTBK SNBT), Jalur Reguler Ujian (tes tertulis), dan jalur 
+prestasi, kemitraan, serta afirmasi (disabilitas, penelusuran bibit unggul, dll.). 
+Pendaftaran dan informasi detail dapat ditemukan di laman resmi SPMB UNS 
+(https://spmb.uns.ac.id/).</p>
+
+<p><b>Jalur masuk UNS mandiri</b></p>
+<ul>
+<li><b>Jalur Reguler UTBK:</b> Menggunakan nilai Ujian Tulis Berbasis Komputer (UTBK) 
+SNBT 2025 sebagai dasar seleksi. Peserta program studi keolahragaan wajib mengikuti ujian 
+keterampilan tambahan.</li>
+<li><b>Jalur Reguler Ujian:</b> Peserta mengikuti tes tertulis yang diselenggarakan oleh UNS.</li>
+<li><b>Jalur Afirmasi:</b> Terbagi dalam beberapa kategori, yaitu:
+<ul>
+<li>Afirmasi Disabilitas</li>
+<li>Afirmasi Penelusuran Bibit Unggul</li>
+<li>Afirmasi Kemaslahatan</li>
+</ul>
+<li><b>Jalur Kemitraan:</b> Diperuntukkan bagi mereka yang memiliki rekomendasi dari 
+instansi mitra atau IKA UNS.</li>
+<li><b>Jalur Prestasi:</b> Berdasarkan prestasi akademik maupun non-akademik.</li>
+<li><b>Jalur Kepemimpinan Muda:</b> Untuk calon mahasiswa dengan potensi kepemimpinan muda.</li>
+<li><b>Jalur Kelas Internasional:</b> Khusus untuk program kelas internasional.</li>
+</ul> 
+
+
+</div>
+
+<!-- AUTHOR -->
+<div class="content page" id="author" style="display:none;">
+    <button onclick="showPage('home')" class="back-btn">← Kembali</button>
+    <h1>Author</h1>
+
+    <img src="haikal.jpeg" class="author-photo">
+
+    <p><b>Nama:</b> Haikal Nadir Firdaus</p>
+    <p><b>Kelas:</b> 12 Saintek B</p>
+    <p><b>Hobi:</b> Bersepeda, Berenang, Badminton</p>
+    <p><b>Cita-cita:</b> Dokter</p>
+</div>
+
+</body>
+</html>
